@@ -5,7 +5,7 @@ defmodule ClosestPoint do
   end
 
   def getMiddleCoord(coordList) do
-  
+
     listLength = length coordList
 
     if rem(listLength, 2) == 0 do
@@ -16,4 +16,7 @@ defmodule ClosestPoint do
 
   end
 
+  def splitCoordDomains(coordList, groupSize) do
+    coordList |> Enum.chunk(groupSize)
+  end
 end
