@@ -5,7 +5,15 @@ defmodule ClosestPoint do
   end
 
   def getMiddleCoord(coordList) do
-    round((length coordList)/2)
+  
+    listLength = length coordList
+
+    if rem(listLength, 2) == 0 do
+      round(listLength/2 + 1)
+    else
+      round(listLength/2)
+    end
+
   end
 
 end

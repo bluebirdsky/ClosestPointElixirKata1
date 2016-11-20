@@ -11,7 +11,7 @@ defmodule AssertionTest do
     assert result == expectedResult
   end
 
-  test "when given an even list of coordinates, return center coordinate index" do
+  test "when given an odd list of coordinates, return center coordinate index" do
     coordList = [{3.1,1}, {1.2,3}, {2.3,2.1}, {4,1}, {-1,3}]
 
     result = ClosestPoint.getMiddleCoord(coordList)
@@ -19,4 +19,14 @@ defmodule AssertionTest do
     expectedResult = 3
     assert result == expectedResult
   end
+
+  test "when given an even list of coordinates, return center coordinate index" do
+    coordList = [{3.1,1}, {1.2,3}, {2.3,2.1}, {4,1}, {-1,3}, {-1,3}]
+
+    result = ClosestPoint.getMiddleCoord(coordList)
+
+    expectedResult = 4
+    assert result == expectedResult
+  end
+  
 end
