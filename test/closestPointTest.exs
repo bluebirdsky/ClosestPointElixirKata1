@@ -55,4 +55,10 @@ defmodule AssertionTest do
     assert result == 1
   end
 
+  test "compute the distance between two points auxiliary test" do
+    coord1 = %Coord{x: 50, y: 10}
+    coord2 = %Coord{x: 10, y: 30}
+    result = ClosestPoint.distanceBetweenTwoPoints(coord1, coord2)
+    assert Float.round(result,5) == 44.72136
+  end
 end
