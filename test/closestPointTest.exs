@@ -43,4 +43,10 @@ defmodule AssertionTest do
     assert result.x == 0 && result.y == 0
   end
 
+  test "creates define coordinate at specified point" do
+    result = %Coord{x: 21.2, y: 211.1}
+    assert result.x == 21.2 && result.y == 211.1
+  end
+
+
 end
