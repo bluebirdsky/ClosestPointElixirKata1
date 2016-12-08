@@ -29,13 +29,18 @@ defmodule AssertionTest do
     assert result == expectedResult
   end
 
-  test "when given a list of coordinates, return two slit domains" do
+  test "when given a list of coordinates, return two split domains" do
     coordList = [{1,1}, {2,3}, {3,2.1}, {4,1}, {5,3}, {6,3}]
 
     result = ClosestPoint.splitCoordDomains(coordList, 3)
 
     expectedResult = [[{1,1}, {2,3}, {3,2.1}], [{4,1}, {5,3}, {6,3}]]
     assert result == expectedResult
+  end
+
+  test "creates define coordinate at origin" do
+    result = %Coord{}
+    assert result.x == 0 && result.y == 0
   end
 
 end

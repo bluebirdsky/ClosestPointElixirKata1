@@ -1,4 +1,4 @@
 #!/bin/bash
-rm Elixir.ClosestPoint.beam
+rm ./*.beam
 elixirc ./src/closestPoint.exs
 elixir ./test/closestPointTest.exs

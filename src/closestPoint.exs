@@ -1,3 +1,7 @@
+defmodule Coord do
+  defstruct x: 0, y: 0
+end
+
 defmodule ClosestPoint do
 
   def sortByX(coordListMap) do
