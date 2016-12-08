@@ -48,5 +48,11 @@ defmodule AssertionTest do
     assert result.x == 21.2 && result.y == 211.1
   end
 
+  test "compute the distance between two points" do
+    coord1 = %Coord{}
+    coord2 = %Coord{x: 1}
+    result = ClosestPoint.distanceBetweenTwoPoints(coord1, coord2)
+    assert result == 1
+  end
 
 end

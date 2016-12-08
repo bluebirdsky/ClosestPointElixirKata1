@@ -23,4 +23,11 @@ defmodule ClosestPoint do
   def splitCoordDomains(coordList, groupSize) do
     coordList |> Enum.chunk(groupSize)
   end
+
+  @spec distanceBetweenTwoPoints(Coord, Coord) :: number
+  def distanceBetweenTwoPoints(coord1, coord2) do
+    :math.sqrt(:math.pow((coord1.x - coord2.x), 2) +
+      :math.pow((coord1.y - coord2.y), 2))
+  end
+
 end
