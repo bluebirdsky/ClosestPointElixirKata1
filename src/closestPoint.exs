@@ -30,8 +30,14 @@ defmodule ClosestPoint do
       :math.pow((coord1.y - coord2.y), 2))
   end
 
-#  @spec findPointDistances(Coord, Coord) :: Coord
   def findPointDistances(coord, coordList) do
     Enum.map(coordList, fn(a) -> %{dist: ClosestPoint.distanceBetweenTwoPoints(a, coord), coord: a} end)
   end
+
+  def findClosestPoint(coord, coordList) do
+    dist = Enum.map(coordList, fn(a) -> %{dist: ClosestPoint.distanceBetweenTwoPoints(a, coord), coord: a} end)
+    distSorted = Enum.sort(dist, &(&1.dist < &2.dist))
+    Enum.at(distSorted, 0)
+  end
+
 end
