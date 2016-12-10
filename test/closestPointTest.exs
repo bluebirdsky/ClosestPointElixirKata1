@@ -75,7 +75,7 @@ defmodule AssertionTest do
 
   test "compute the point in a list closest to a given point" do
     coord = %Coord{x: 20.3, y: 12}
-    coordList = [%Coord{x: 10, y: 40}, %Coord{x: 20, y: 30}, %Coord{x: 5, y: 2.1}]
+    coordList = [%Coord{x: 10, y: 40}, coord, %Coord{x: 20, y: 30}, %Coord{x: 5, y: 2.1}]
 
     result = ClosestPoint.findClosestPoint(coord, coordList)
 
