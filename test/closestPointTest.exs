@@ -61,4 +61,16 @@ defmodule AssertionTest do
     result = ClosestPoint.distanceBetweenTwoPoints(coord1, coord2)
     assert Float.round(result,5) == 44.72136
   end
+
+  test "compute the distance between one point given a list of points" do
+    coord = %Coord{x: 20.3, y: 12}
+    coordList = [%Coord{x: 10, y: 40}, %Coord{x: 20, y: 30}]
+
+    result = ClosestPoint.findPointDistances(coord, coordList)
+
+    assert result ==
+      [%{coord: %Coord{x: 10, y: 40}, dist: 29.834376145647827},
+      %{coord: %Coord{x: 20, y: 30}, dist: 18.002499826412997}]
+  end
+
 end
