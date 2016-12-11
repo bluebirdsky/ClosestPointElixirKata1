@@ -22,7 +22,8 @@ defmodule AssertionTest do
   end
 
   test "when given an even list of coordinates, return center coordinate index" do
-    coordList = [{3.1,1}, {1.2,3}, {2.3,2.1}, {4,1}, {-1,3}, {-1,3}]
+    coordList = [%Coord{x: 3.1, y: 1}, %Coord{x: 1.2, y: 3}, %Coord{x: 2.3, y: 2.1},
+      %Coord{x: 4, y: 1}, %Coord{x: -1, y: 3}, %Coord{x: -1, y: 10}]
 
     result = ClosestPoint.getMiddleCoord(coordList)
 
