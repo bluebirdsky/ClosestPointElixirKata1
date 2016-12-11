@@ -90,7 +90,6 @@ defmodule AssertionTest do
     assert result.dist == 13.793114224133722 &&
       ((result.coord0 == %Coord{x: 20, y: 31.5} && result.coord == %Coord{x: 10, y: 41}) ||
        (result.coord == %Coord{x: 20, y: 31.5} && result.coord0 == %Coord{x: 10, y: 41}) )
-
   end
 
 end
