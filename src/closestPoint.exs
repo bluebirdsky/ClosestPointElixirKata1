@@ -40,4 +40,10 @@ defmodule ClosestPoint do
     Enum.at(distSorted, 1)
   end
 
+  def findTwoClosestPoints_BrutForce(coordList) do
+    dist = Enum.map(coordList, fn(a) -> Map.merge(ClosestPoint.findClosestPoint(a, coordList), %{coord0: a}) end)
+    distSorted = Enum.sort(dist, &(&1.dist < &2.dist))
+    Enum.at(distSorted, 0)
+  end
+
 end

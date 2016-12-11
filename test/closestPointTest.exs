@@ -79,8 +79,18 @@ defmodule AssertionTest do
 
     result = ClosestPoint.findClosestPoint(coord, coordList)
 
-    assert result === %{coord: %Coord{x: 20, y: 30}, dist: 18.002499826412997}
+    assert result == %{coord: %Coord{x: 20, y: 30}, dist: 18.002499826412997}
   end
 
+  test "compute the two closest point brutt force" do
+    coordList = [%Coord{x: 10, y: 41}, %Coord{x: 20.3, y: 12}, %Coord{x: 20, y: 31.5}, %Coord{x: 5, y: 2.1}]
+
+    result = ClosestPoint.findTwoClosestPoints_BrutForce(coordList)
+
+    assert result.dist == 13.793114224133722 &&
+      ((result.coord0 == %Coord{x: 20, y: 31.5} && result.coord == %Coord{x: 10, y: 41}) ||
+       (result.coord == %Coord{x: 20, y: 31.5} && result.coord0 == %Coord{x: 10, y: 41}) )
+
+  end
 
 end
