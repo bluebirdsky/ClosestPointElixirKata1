@@ -32,11 +32,13 @@ defmodule AssertionTest do
   end
 
   test "when given a list of coordinates, return two split domains" do
-    coordList = [{1,1}, {2,3}, {3,2.1}, {4,1}, {5,3}, {6,3}]
+    coordList = [%Coord{x: 1, y: 1}, %Coord{x: 2, y: 3}, %Coord{x: 3, y: 2.1},
+      %Coord{x: 4, y: 1}, %Coord{x: 5, y: 3}, %Coord{x: 6, y: 3}]
 
     result = ClosestPoint.splitCoordDomains(coordList, 3)
 
-    expectedResult = [[{1,1}, {2,3}, {3,2.1}], [{4,1}, {5,3}, {6,3}]]
+    expectedResult = [[%Coord{x: 1, y: 1}, %Coord{x: 2, y: 3}, %Coord{x: 3, y: 2.1}],
+      [%Coord{x: 4, y: 1}, %Coord{x: 5, y: 3}, %Coord{x: 6, y: 3}]]
     assert result == expectedResult
   end
 
