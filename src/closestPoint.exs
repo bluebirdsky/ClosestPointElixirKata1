@@ -35,7 +35,7 @@ defmodule ClosestPoint do
   end
 
   def findClosestPoint(coord, coordList) do
-    dist = Enum.map(coordList, fn(a) -> %{dist: ClosestPoint.distanceBetweenTwoPoints(a, coord), coord: a} end)
+    dist = ClosestPoint.findPointDistances(coord, coordList)
     distSorted = Enum.sort(dist, &(&1.dist < &2.dist))
     Enum.at(distSorted, 1)
   end
