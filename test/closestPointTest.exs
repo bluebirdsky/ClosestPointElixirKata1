@@ -3,11 +3,11 @@ defmodule AssertionTest do
   use ExUnit.Case, async: true
 
   test "when given list of x, y coordinates, return list sorted by x" do
-    coordListMap = MapSet.new([{3.1,1}, {1.2,3}, {2.3,2.1}])
+    coordList = [%Coord{x: 3.1, y: 1}, %Coord{x: 1.2, y: 3}, %Coord{x: 2.3, y: 2.1}]
 
-    result = ClosestPoint.sortByX(coordListMap)
+    result = ClosestPoint.sortByX(coordList)
 
-    expectedResult = [{1.2,3},{2.3,2.1},{3.1,1}]
+    expectedResult = [%Coord{x: 1.2, y: 3}, %Coord{x: 2.3, y: 2.1}, %Coord{x: 3.1, y: 1}]
     assert result == expectedResult
   end
 

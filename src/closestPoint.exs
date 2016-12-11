@@ -4,8 +4,8 @@ end
 
 defmodule ClosestPoint do
 
-  def sortByX(coordListMap) do
-    Enum.sort(coordListMap)
+  def sortByX(coordList) do
+    Enum.sort(coordList, &(&1.x < &2.x))
   end
 
   def getMiddleCoord(coordList) do
