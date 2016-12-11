@@ -20,4 +20,10 @@ defmodule DivideAndConquer do
     coordList |> Enum.chunk(groupSize)
   end
 
+  def closestPointsInTwoDomains(coordSplitList) do
+    dist = Enum.map(coordSplitList, fn(a) -> ClosestPoint.findTwoClosestPoints(a) end)
+    distSorted = Enum.sort(dist, &(&1.dist < &2.dist))
+    Enum.at(distSorted, 0)
+  end
+
 end

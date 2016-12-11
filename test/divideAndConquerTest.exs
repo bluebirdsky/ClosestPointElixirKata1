@@ -42,4 +42,16 @@ defmodule DivideAndConquerTest do
     assert result == expectedResult
   end
 
+  test "when given a list of coordinates from two subdomains, return closest point from the two split domains" do
+    coordSplitList = [[%Coord{x: 1, y: 1}, %Coord{x: 2, y: 3}, %Coord{x: 3, y: 2.1}],
+      [%Coord{x: 4, y: 1}, %Coord{x: 5, y: 3}, %Coord{x: 6, y: 3}]]
+
+    result = DivideAndConquer.closestPointsInTwoDomains(coordSplitList)
+
+    assert result.dist == 1.0 &&
+      ((result.coord0 == %Coord{x: 5, y: 3} && result.coord == %Coord{x: 6, y: 3}) ||
+       (result.coord == %Coord{x: 5, y: 3} && result.coord0 == %Coord{x: 6, y: 3}) )
+  end
+
+
 end
