@@ -53,5 +53,16 @@ defmodule DivideAndConquerTest do
        (result.coord == %Coord{x: 5, y: 3} && result.coord0 == %Coord{x: 6, y: 3}) )
   end
 
+  test "when given a sorted list of coordinates, return middle slice of width 2d" do
+    sortedCoordList = [%Coord{x: 0, y: 0}, %Coord{x: 1, y: 1}, %Coord{x: 2, y: 3}, %Coord{x: 3, y: 2.1},
+      %Coord{x: 4, y: 1}, %Coord{x: 5, y: 3}, %Coord{x: 6, y: 3}, %Coord{x: 7, y: 2}, %Coord{x: 8, y: 2}]
+    dist = 2.0
+
+    result = DivideAndConquer.middleDomain(sortedCoordList, dist)
+
+    expectedResult = [%Coord{x: 3, y: 2.1}, %Coord{x: 4, y: 1}, %Coord{x: 5, y: 3}, %Coord{x: 6, y: 3}, %Coord{x: 7, y: 2}]
+
+    assert result == expectedResult
+  end
 
 end

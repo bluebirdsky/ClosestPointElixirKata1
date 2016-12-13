@@ -26,4 +26,12 @@ defmodule DivideAndConquer do
     Enum.at(distSorted, 0)
   end
 
+  def middleDomain(sortedCoordList, dist) do
+    middleCoordIndex = DivideAndConquer.getMiddleCoord(sortedCoordList)
+    middleCoord = Enum.at(sortedCoordList, middleCoordIndex)
+    minMiddleDomain = middleCoord.x - dist
+    maxMiddleDomain = middleCoord.x + dist
+    Enum.filter(sortedCoordList, fn(a) -> (a.x >= minMiddleDomain && a.x <= maxMiddleDomain) end )
+  end
+
 end
