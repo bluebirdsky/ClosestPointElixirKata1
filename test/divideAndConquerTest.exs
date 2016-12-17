@@ -31,7 +31,7 @@ defmodule DivideAndConquerTest do
     assert result == expectedResult
   end
 
-  test "when given a list of coordinates, return two split domains" do
+  test "when given a list of coordinates, return two split domains of equal size" do
     coordList = [%Coord{x: 1, y: 1}, %Coord{x: 2, y: 3}, %Coord{x: 3, y: 2.1},
       %Coord{x: 4, y: 1}, %Coord{x: 5, y: 3}, %Coord{x: 6, y: 3}]
 
@@ -39,6 +39,17 @@ defmodule DivideAndConquerTest do
 
     expectedResult = [[%Coord{x: 1, y: 1}, %Coord{x: 2, y: 3}, %Coord{x: 3, y: 2.1}],
       [%Coord{x: 4, y: 1}, %Coord{x: 5, y: 3}, %Coord{x: 6, y: 3}]]
+    assert result == expectedResult
+  end
+
+  test "when given a list of coordinates, return two split domains of unequal size" do
+    coordList = [%Coord{x: 1, y: 1}, %Coord{x: 2, y: 3}, %Coord{x: 3, y: 2.1},
+      %Coord{x: 4, y: 1}, %Coord{x: 5, y: 3}]
+
+    result = DivideAndConquer.splitCoordDomains(coordList, 3)
+
+    expectedResult = [[%Coord{x: 1, y: 1}, %Coord{x: 2, y: 3}, %Coord{x: 3, y: 2.1}],
+      [%Coord{x: 4, y: 1}, %Coord{x: 5, y: 3}]]
     assert result == expectedResult
   end
 
