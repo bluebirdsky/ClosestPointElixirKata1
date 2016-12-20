@@ -21,9 +21,8 @@ defmodule DivideAndConquer do
   end
 
   def closestPointsInTwoDomains(coordSplitList) do
-    dist = Enum.map(coordSplitList, fn(a) -> ClosestPoint.findTwoClosestPoints(a) end)
-    distSorted = Enum.sort(dist, &(&1.dist < &2.dist))
-    Enum.at(distSorted, 0)
+    closestPointsList = Enum.map(coordSplitList, fn(a) -> ClosestPoint.findTwoClosestPoints(a) end)
+    determineClosestPoints(closestPointsList)
   end
 
   def middleDomain(sortedCoordList, dist) do
