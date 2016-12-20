@@ -44,20 +44,19 @@ defmodule DivideAndConquer do
     end
   end
 
-  def determineClosestPoints(closestPoints1, closestPoints2) do
-    cond do
-      closestPoints1.dist == closestPoints2.dist ->
-        cond do
-          closestPointsAreTheEqual(closestPoints1, closestPoints2) ->
-            [closestPoints1]
-          true ->
-            [closestPoints1, closestPoints2]
-        end
-      closestPoints1.dist < closestPoints2.dist ->
-        [closestPoints1]
-      true ->
-        [closestPoints2]
-    end
+  def determineClosestPoints(closestPointsList) do
+    sortedByDistList = Enum.sort(closestPointsList, &(&1.dist < &2.dist))
+    Enum.at(sortedByDistList, 0)
+  end
+
+  def compute(coordList) do
+    sortedCoordList = DivideAndConquer.sortByX(coordList)
+    middleCoordIndex = DivideAndConquer.getMiddleCoord(sortedCoordList)
+    coordSplitDomainList = DivideAndConquer.splitCoordDomains(sortedCoordList, middleCoordIndex-1)
+    closestPointsInHalfDomain = DivideAndConquer.closestPointsInTwoDomains(coordSplitDomainList)
+    middleDomainCoordList = DivideAndConquer.middleDomain(sortedCoordList, closestPointsInHalfDomain.dist)
+    closestPointsInMiddleDomain = ClosestPoint.findTwoClosestPoints(middleDomainCoordList)
+    DivideAndConquer.determineClosestPoints([closestPointsInHalfDomain, closestPointsInMiddleDomain])
   end
 
 end

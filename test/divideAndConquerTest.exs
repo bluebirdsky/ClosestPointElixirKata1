@@ -80,37 +80,47 @@ defmodule DivideAndConquerTest do
     closestPoints1 = %{coord: %Coord{}, coord0: %Coord{}, dist: 1}
     closestPoints2 = %{coord: %Coord{}, coord0: %Coord{}, dist: 1}
 
-    result = DivideAndConquer.determineClosestPoints(closestPoints1, closestPoints2)
+    result = DivideAndConquer.determineClosestPoints([closestPoints1, closestPoints2])
 
-    assert result == [closestPoints1]
+    assert result == closestPoints1 || result == closestPoints2
   end
 
   test "when equal distance but different closest points, return one closest point" do
     closestPoints1 = %{coord: %Coord{x: -1, y: 0}, coord0: %Coord{}, dist: 1}
     closestPoints2 = %{coord: %Coord{}, coord0: %Coord{x: 1, y: 0}, dist: 1}
 
-    result = DivideAndConquer.determineClosestPoints(closestPoints1, closestPoints2)
+    result = DivideAndConquer.determineClosestPoints([closestPoints1, closestPoints2])
 
-    assert result == [closestPoints1, closestPoints2] ||
-      result == [closestPoints2, closestPoints1]
+    assert result == closestPoints1 || result == closestPoints2
   end
 
   test "when point 1 is closer that point 2, return point 1" do
     closestPoints1 = %{coord: %Coord{}, coord0: %Coord{}, dist: 1}
     closestPoints2 = %{coord: %Coord{}, coord0: %Coord{}, dist: 2}
 
-    result = DivideAndConquer.determineClosestPoints(closestPoints1, closestPoints2)
+    result = DivideAndConquer.determineClosestPoints([closestPoints1, closestPoints2])
 
-    assert result == [closestPoints1]
+    assert result == closestPoints1
   end
 
   test "when point 2 is closer that point 1, return point 2" do
     closestPoints1 = %{coord: %Coord{}, coord0: %Coord{}, dist: 2}
     closestPoints2 = %{coord: %Coord{}, coord0: %Coord{}, dist: 1}
 
-    result = DivideAndConquer.determineClosestPoints(closestPoints1, closestPoints2)
+    result = DivideAndConquer.determineClosestPoints([closestPoints1, closestPoints2])
 
-    assert result == [closestPoints2]
+    assert result == closestPoints2
+  end
+
+  test "list of coordinates of even size, return closest points using Divide and Conquer" do
+    coordList = [%Coord{x: 2, y: 3}, %Coord{x: 6, y: 3}, %Coord{x: 3, y: 2.1}, %Coord{x: 1, y: 1},
+      %Coord{x: 5, y: 3}, %Coord{x: 4, y: 1}]
+
+    result = DivideAndConquer.compute(coordList)
+
+    expectedResult = %{coord: %Coord{x: 5, y: 3}, coord0: %Coord{x: 6, y: 3}, dist: 1.0}
+
+    assert result == expectedResult
   end
 
 end
