@@ -34,10 +34,25 @@ defmodule DivideAndConquer do
     Enum.filter(sortedCoordList, fn(a) -> (a.x >= minMiddleDomain && a.x <= maxMiddleDomain) end )
   end
 
+  def closestPointsAreTheEqual(closestPoints1, closestPoints2) do
+    cond do
+      (closestPoints1.coord0 == closestPoints2.coord0 &&
+      closestPoints1.coord == closestPoints2.coord) ||
+      (closestPoints1.coord0 == closestPoints2.coord &&
+      closestPoints1.coord == closestPoints2.coord0) -> true
+      true -> false
+    end
+  end
+
   def determineClosestPoints(closestPoints1, closestPoints2) do
     cond do
       closestPoints1.dist == closestPoints2.dist ->
-        [closestPoints1, closestPoints2]
+        cond do
+          closestPointsAreTheEqual(closestPoints1, closestPoints2) ->
+            [closestPoints1]
+          true ->
+            [closestPoints1, closestPoints2]
+        end
       closestPoints1.dist < closestPoints2.dist ->
         [closestPoints1]
       true ->

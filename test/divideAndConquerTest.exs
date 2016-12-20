@@ -76,13 +76,23 @@ defmodule DivideAndConquerTest do
     assert result == expectedResult
   end
 
-  test "when equal point distances, return both points in order 1 and 2" do
+  test "when equal closest points, return one closest point" do
     closestPoints1 = %{coord: %Coord{}, coord0: %Coord{}, dist: 1}
     closestPoints2 = %{coord: %Coord{}, coord0: %Coord{}, dist: 1}
 
     result = DivideAndConquer.determineClosestPoints(closestPoints1, closestPoints2)
 
-    assert result == [closestPoints1, closestPoints2]
+    assert result == [closestPoints1]
+  end
+
+  test "when equal distance but different closest points, return one closest point" do
+    closestPoints1 = %{coord: %Coord{x: -1, y: 0}, coord0: %Coord{}, dist: 1}
+    closestPoints2 = %{coord: %Coord{}, coord0: %Coord{x: 1, y: 0}, dist: 1}
+
+    result = DivideAndConquer.determineClosestPoints(closestPoints1, closestPoints2)
+
+    assert result == [closestPoints1, closestPoints2] ||
+      result == [closestPoints2, closestPoints1]
   end
 
   test "when point 1 is closer that point 2, return point 1" do
