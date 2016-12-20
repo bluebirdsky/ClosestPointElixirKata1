@@ -2,12 +2,12 @@ ExUnit.start
 defmodule ClosestPointTest do
   use ExUnit.Case, async: true
 
-  test "creates define coordinate at origin" do
+  test "creates coordinate at origin" do
     result = %Coord{}
     assert result.x == 0 && result.y == 0
   end
 
-  test "creates define coordinate at specified point" do
+  test "creates coordinate at specified point" do
     result = %Coord{x: 21.2, y: 211.1}
     assert result.x == 21.2 && result.y == 211.1
   end
@@ -46,7 +46,7 @@ defmodule ClosestPointTest do
     assert result == %{coord: %Coord{x: 20, y: 30}, dist: 18.002499826412997}
   end
 
-  test "compute the two closest point brut force" do
+  test "compute the two closest points using brut force" do
     coordList = [%Coord{x: 10, y: 41}, %Coord{x: 20.3, y: 12}, %Coord{x: 20, y: 31.5}, %Coord{x: 5, y: 2.1}]
 
     result = ClosestPoint.findTwoClosestPoints(coordList)
