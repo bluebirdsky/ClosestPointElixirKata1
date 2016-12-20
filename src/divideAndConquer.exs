@@ -34,7 +34,7 @@ defmodule DivideAndConquer do
   end
 
   def determineClosestPoints(closestPointsList) do
-    sortedByDistList = Enum.sort(closestPointsList, &(&1.dist < &2.dist))
+    sortedByDistList = ClosestPoint.sortByDistance(closestPointsList)
     Enum.at(sortedByDistList, 0)
   end
 

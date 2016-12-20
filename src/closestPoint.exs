@@ -14,15 +14,19 @@ defmodule ClosestPoint do
     Enum.map(coordList, fn(a) -> %{dist: ClosestPoint.distanceBetweenTwoPoints(a, coord), coord: a} end)
   end
 
+  def sortByDistance(coordDistanceList) do
+    Enum.sort(coordDistanceList, &(&1.dist < &2.dist))
+  end
+
   def findClosestPoint(coord, coordList) do
-    dist = ClosestPoint.findPointDistances(coord, coordList)
-    distSorted = Enum.sort(dist, &(&1.dist < &2.dist))
+    coordDistanceList = ClosestPoint.findPointDistances(coord, coordList)
+    distSorted = sortByDistance(coordDistanceList)
     Enum.at(distSorted, 1)
   end
 
   def findTwoClosestPoints(coordList) do
-    dist = Enum.map(coordList, fn(a) -> Map.merge(ClosestPoint.findClosestPoint(a, coordList), %{coord0: a}) end)
-    distSorted = Enum.sort(dist, &(&1.dist < &2.dist))
+    coordDistanceList = Enum.map(coordList, fn(a) -> Map.merge(ClosestPoint.findClosestPoint(a, coordList), %{coord0: a}) end)
+    distSorted = sortByDistance(coordDistanceList)
     Enum.at(distSorted, 0)
   end
 
