@@ -49,7 +49,7 @@ defmodule ClosestPointTest do
   test "compute the two closest points using brut force" do
     coordList = [%Coord{x: 10, y: 41}, %Coord{x: 20.3, y: 12}, %Coord{x: 20, y: 31.5}, %Coord{x: 5, y: 2.1}]
 
-    result = ClosestPoint.findTwoClosestPoints(coordList)
+    result = ClosestPoint.compute(coordList)
 
     assert result.dist == 13.793114224133722 &&
       ((result.coord0 == %Coord{x: 20, y: 31.5} && result.coord == %Coord{x: 10, y: 41}) ||

@@ -24,7 +24,7 @@ defmodule ClosestPoint do
     Enum.at(distSorted, 1)
   end
 
-  def findTwoClosestPoints(coordList) do
+  def compute(coordList) do
     coordDistanceList = Enum.map(coordList, fn(a) -> Map.merge(ClosestPoint.findClosestPoint(a, coordList), %{coord0: a}) end)
     distSorted = sortByDistance(coordDistanceList)
     Enum.at(distSorted, 0)
