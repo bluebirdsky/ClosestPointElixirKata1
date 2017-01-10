@@ -123,7 +123,6 @@ defmodule DivideAndConquerTest do
     assert result == expectedResult
   end
 
-
   test "list of coordinates of odd size, return closest points using Divide and Conquer" do
     coordList = [%Coord{x: 2, y: 3}, %Coord{x: 6, y: 3}, %Coord{x: 3, y: 2.1}, %Coord{x: 1, y: 1},
       %Coord{x: 5, y: 3}]
@@ -134,4 +133,13 @@ defmodule DivideAndConquerTest do
 
     assert result == expectedResult
   end
+
+  test "return nil for blank coordList" do
+    coordList = []
+
+    result = DivideAndConquer.compute(coordList)
+
+    assert result == nil
+  end
+
 end

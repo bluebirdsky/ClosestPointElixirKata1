@@ -39,13 +39,15 @@ defmodule DivideAndConquer do
   end
 
   def compute(coordList) do
-    sortedCoordList = DivideAndConquer.sortByX(coordList)
-    middleCoordIndex = DivideAndConquer.getMiddleCoord(sortedCoordList)
-    coordSplitDomainList = DivideAndConquer.splitCoordDomains(sortedCoordList, middleCoordIndex)
-    closestPointsInHalfDomain = DivideAndConquer.closestPointsInTwoDomains(coordSplitDomainList)
-    middleDomainCoordList = DivideAndConquer.middleDomain(sortedCoordList, closestPointsInHalfDomain.dist)
-    closestPointsInMiddleDomain = ClosestPoint.compute(middleDomainCoordList)
-    DivideAndConquer.determineClosestPoints([closestPointsInHalfDomain, closestPointsInMiddleDomain])
+    if coordList != [] do
+      sortedCoordList = DivideAndConquer.sortByX(coordList)
+      middleCoordIndex = DivideAndConquer.getMiddleCoord(sortedCoordList)
+      coordSplitDomainList = DivideAndConquer.splitCoordDomains(sortedCoordList, middleCoordIndex)
+      closestPointsInHalfDomain = DivideAndConquer.closestPointsInTwoDomains(coordSplitDomainList)
+      middleDomainCoordList = DivideAndConquer.middleDomain(sortedCoordList, closestPointsInHalfDomain.dist)
+      closestPointsInMiddleDomain = ClosestPoint.compute(middleDomainCoordList)
+      DivideAndConquer.determineClosestPoints([closestPointsInHalfDomain, closestPointsInMiddleDomain])
+    end
   end
 
 end

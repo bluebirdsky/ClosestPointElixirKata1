@@ -56,4 +56,12 @@ defmodule ClosestPointTest do
        (result.coord == %Coord{x: 20, y: 31.5} && result.coord0 == %Coord{x: 10, y: 41}) )
   end
 
+  test "return nil for blank coordList" do
+    coordList = []
+
+    result = ClosestPoint.compute(coordList)
+
+    assert result == nil
+  end
+
 end
