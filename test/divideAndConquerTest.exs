@@ -69,7 +69,7 @@ defmodule DivideAndConquerTest do
       %Coord{x: 4, y: 1}, %Coord{x: 5, y: 3}, %Coord{x: 6, y: 3}, %Coord{x: 7, y: 2}, %Coord{x: 8, y: 2}]
     dist = 2.0
 
-    result = DivideAndConquer.middleDomain(sortedCoordList, dist)
+    result = DivideAndConquer.getMiddleCoordDomain(sortedCoordList, dist)
 
     expectedResult = [%Coord{x: 3, y: 2.1}, %Coord{x: 4, y: 1}, %Coord{x: 5, y: 3}, %Coord{x: 6, y: 3}, %Coord{x: 7, y: 2}]
 

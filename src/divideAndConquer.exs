@@ -20,12 +20,17 @@ defmodule DivideAndConquer do
     sortedCoordList |> Enum.chunk(groupSize, groupSize, [])
   end
 
+  def determineClosestPoints(closestPointsList) do
+    sortedByDistList = ClosestPoint.sortByDistance(closestPointsList)
+    Enum.at(sortedByDistList, 0)
+  end
+
   def closestPointsInTwoDomains(coordSplitList) do
     closestPointsList = Enum.map(coordSplitList, fn(a) -> ClosestPoint.compute(a) end)
     determineClosestPoints(closestPointsList)
   end
 
-  def middleDomain(sortedCoordList, dist) do
+  def getMiddleCoordDomain(sortedCoordList, dist) do
     middleCoordIndex = DivideAndConquer.getMiddleCoord(sortedCoordList)
     middleCoord = Enum.at(sortedCoordList, middleCoordIndex)
     minMiddleDomain = middleCoord.x - dist
@@ -33,20 +38,17 @@ defmodule DivideAndConquer do
     Enum.filter(sortedCoordList, fn(a) -> (a.x >= minMiddleDomain && a.x <= maxMiddleDomain) end )
   end
 
-  def determineClosestPoints(closestPointsList) do
-    sortedByDistList = ClosestPoint.sortByDistance(closestPointsList)
-    Enum.at(sortedByDistList, 0)
-  end
-
   def compute(coordList) do
-    if !Enum.empty?(coordList) do
+    if !Enum.empty?(Enum.drop(coordList, 4)) do
       sortedCoordList = DivideAndConquer.sortByX(coordList)
       middleCoordIndex = DivideAndConquer.getMiddleCoord(sortedCoordList)
       coordSplitDomainList = DivideAndConquer.splitCoordDomains(sortedCoordList, middleCoordIndex)
       closestPointsInHalfDomain = DivideAndConquer.closestPointsInTwoDomains(coordSplitDomainList)
-      middleDomainCoordList = DivideAndConquer.middleDomain(sortedCoordList, closestPointsInHalfDomain.dist)
+      middleDomainCoordList = DivideAndConquer.getMiddleCoordDomain(sortedCoordList, closestPointsInHalfDomain.dist)
       closestPointsInMiddleDomain = ClosestPoint.compute(middleDomainCoordList)
       DivideAndConquer.determineClosestPoints([closestPointsInHalfDomain, closestPointsInMiddleDomain])
+    else
+      ClosestPoint.compute(coordList)
     end
   end
 
