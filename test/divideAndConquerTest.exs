@@ -1,4 +1,9 @@
 ExUnit.start
+
+defmodule TestStruct do
+  defstruct x: 0, y: 0
+end
+
 defmodule DivideAndConquerTest do
   use ExUnit.Case, async: true
 
@@ -151,6 +156,11 @@ defmodule DivideAndConquerTest do
 
   test "return nil for input that is not a list of type map" do
     result = DivideAndConquer.compute([1, 2, 3, 4, 5])
+    assert result == nil
+  end
+
+  test "return nil for input that is not a list of type map Coord" do
+    result = DivideAndConquer.compute([%TestStruct{x: 20, y: 31.5}, %TestStruct{x: 20, y: 31.5}, %TestStruct{x: 20, y: 31.5}, %TestStruct{x: 20, y: 31.5}, %TestStruct{x: 20, y: 31.5}])
     assert result == nil
   end
 

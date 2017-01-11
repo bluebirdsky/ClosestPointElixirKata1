@@ -52,12 +52,8 @@ defmodule DivideAndConquer do
     end
   end
 
-  def isValidInput(coordList) do
-    is_list(coordList) && is_map(Enum.at(coordList, 0))
-  end
-
   def compute(coordList) do
-    if isValidInput(coordList) do
+    if ClosestPoint.isValidInput(coordList) do
       implementAlgorithm(coordList)
     else
       nil

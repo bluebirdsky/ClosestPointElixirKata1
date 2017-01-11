@@ -37,7 +37,9 @@ defmodule ClosestPoint do
   end
 
   def isValidInput(coordList) do
-    is_list(coordList) && is_map(Enum.at(coordList, 0))
+    is_list(coordList) && \
+    is_map(Enum.at(coordList, 0)) && \
+    Enum.at(coordList, 0).__struct__ == Coord 
   end
 
   def compute(coordList) do

@@ -1,4 +1,9 @@
 ExUnit.start
+
+defmodule TestStruct do
+  defstruct x: 0, y: 0
+end
+
 defmodule ClosestPointTest do
   use ExUnit.Case, async: true
 
@@ -51,6 +56,11 @@ defmodule ClosestPointTest do
 
   test "return nil for input that is not a list of type map" do
     result = ClosestPoint.compute([1, 2])
+    assert result == nil
+  end
+
+  test "return nil for input that is not a list of type map Coord" do
+    result = ClosestPoint.compute([%TestStruct{x: 20, y: 31.5}, %TestStruct{x: 20, y: 31.5}])
     assert result == nil
   end
 
