@@ -30,10 +30,22 @@ defmodule ClosestPoint do
     end
   end
 
-  def compute(coordList) do
+  def implementAlgorithm(coordList) do
     coordDistanceList = computeUpperTriangle(coordList)
     distSorted = sortByDistance(coordDistanceList)
     Enum.at(distSorted, 0)
+  end
+
+  def isValidInput(coordList) do
+    is_list(coordList)
+  end
+
+  def compute(coordList) do
+    if isValidInput(coordList) do
+      implementAlgorithm(coordList)
+    else
+      nil
+    end
   end
 
 end

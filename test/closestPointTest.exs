@@ -44,4 +44,9 @@ defmodule ClosestPointTest do
     assert result == nil
   end
 
+  test "return nil for input that is not a list" do
+    result = ClosestPoint.compute(1)
+    assert result == nil
+  end
+
 end

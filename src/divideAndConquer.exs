@@ -38,7 +38,7 @@ defmodule DivideAndConquer do
     Enum.filter(sortedCoordList, fn(a) -> (a.x >= minMiddleDomain && a.x <= maxMiddleDomain) end )
   end
 
-  def compute(coordList) do
+  def implementAlgorithm(coordList) do
     if !Enum.empty?(Enum.drop(coordList, 4)) do
       sortedCoordList = DivideAndConquer.sortByX(coordList)
       middleCoordIndex = DivideAndConquer.getMiddleCoord(sortedCoordList)
@@ -49,6 +49,18 @@ defmodule DivideAndConquer do
       DivideAndConquer.determineClosestPoints([closestPointsInHalfDomain, closestPointsInMiddleDomain])
     else
       ClosestPoint.compute(coordList)
+    end
+  end
+
+  def isValidInput(coordList) do
+    is_list(coordList)
+  end
+
+  def compute(coordList) do
+    if isValidInput(coordList) do
+      implementAlgorithm(coordList)
+    else
+      nil
     end
   end
 
