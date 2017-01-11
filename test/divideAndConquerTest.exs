@@ -149,4 +149,9 @@ defmodule DivideAndConquerTest do
     assert result == nil
   end
 
+  test "return nil for input that is not a list of type map" do
+    result = DivideAndConquer.compute([1, 2, 3, 4, 5])
+    assert result == nil
+  end
+
 end

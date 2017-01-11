@@ -53,7 +53,7 @@ defmodule DivideAndConquer do
   end
 
   def isValidInput(coordList) do
-    is_list(coordList)
+    is_list(coordList) && is_map(Enum.at(coordList, 0))
   end
 
   def compute(coordList) do

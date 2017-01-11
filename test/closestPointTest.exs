@@ -49,4 +49,9 @@ defmodule ClosestPointTest do
     assert result == nil
   end
 
+  test "return nil for input that is not a list of type map" do
+    result = ClosestPoint.compute([1, 2])
+    assert result == nil
+  end
+
 end
