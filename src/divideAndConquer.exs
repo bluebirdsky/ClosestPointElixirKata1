@@ -39,7 +39,7 @@ defmodule DivideAndConquer do
   end
 
   def compute(coordList) do
-    if coordList != [] do
+    if !Enum.empty?(coordList) do
       sortedCoordList = DivideAndConquer.sortByX(coordList)
       middleCoordIndex = DivideAndConquer.getMiddleCoord(sortedCoordList)
       coordSplitDomainList = DivideAndConquer.splitCoordDomains(sortedCoordList, middleCoordIndex)

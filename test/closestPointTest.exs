@@ -26,26 +26,6 @@ defmodule ClosestPointTest do
     assert Float.round(result,5) == 44.72136
   end
 
-  test "compute the distance between one point given a list of points" do
-    coord = %Coord{x: 20.3, y: 12}
-    coordList = [%Coord{x: 10, y: 40}, %Coord{x: 20, y: 30}]
-
-    result = ClosestPoint.findPointDistances(coord, coordList)
-
-    assert result ==
-      [%{coord: %Coord{x: 10, y: 40}, dist: 29.834376145647827},
-      %{coord: %Coord{x: 20, y: 30}, dist: 18.002499826412997}]
-  end
-
-  test "compute the point in a list closest to a given point" do
-    coord = %Coord{x: 20.3, y: 12}
-    coordList = [%Coord{x: 10, y: 40}, coord, %Coord{x: 20, y: 30}, %Coord{x: 5, y: 2.1}]
-
-    result = ClosestPoint.findClosestPoint(coord, coordList)
-
-    assert result == %{coord: %Coord{x: 20, y: 30}, dist: 18.002499826412997}
-  end
-
   test "compute the two closest points using brut force" do
     coordList = [%Coord{x: 10, y: 41}, %Coord{x: 20.3, y: 12}, %Coord{x: 20, y: 31.5}, %Coord{x: 5, y: 2.1}]
 
