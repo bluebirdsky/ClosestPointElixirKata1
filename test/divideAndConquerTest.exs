@@ -144,7 +144,6 @@ defmodule DivideAndConquerTest do
     assert result == nil
   end
 
-
   test "return nil for input that is not a list" do
     result = DivideAndConquer.compute(1)
     assert result == nil
