@@ -18,12 +18,12 @@ defmodule ClosestPoint do
     Enum.sort(coordDistanceList, &(&1.dist < &2.dist))
   end
 
-  def upper_triangle(coordList) do
+  def computeUpperTriangle(coordList) do
     trimmedCoordList = Enum.drop(coordList, 1)
 
     if !Enum.empty?(trimmedCoordList) do
       coord0 = Enum.at(coordList, 0)
-      coordDistanceList = upper_triangle(trimmedCoordList)
+      coordDistanceList = computeUpperTriangle(trimmedCoordList)
       Enum.concat(coordDistanceList, ClosestPoint.findPointDistances(coord0, trimmedCoordList) )
     else
       []
@@ -31,7 +31,7 @@ defmodule ClosestPoint do
   end
 
   def compute(coordList) do
-    coordDistanceList = upper_triangle(coordList)
+    coordDistanceList = computeUpperTriangle(coordList)
     distSorted = sortByDistance(coordDistanceList)
     Enum.at(distSorted, 0)
   end
